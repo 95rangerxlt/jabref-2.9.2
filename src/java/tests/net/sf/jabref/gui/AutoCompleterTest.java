@@ -42,6 +42,14 @@ public class AutoCompleterTest extends TestCase {
 		assertTrue(autoCompleter instanceof DefaultAutoCompleter);
 	}
 
+	public void testCompleteWithNoAccents() {
+		AbstractAutoCompleter autoCompleter = AutoCompleterFactory.getFor(AUTHOR_FIELD);
+		for (BibtexEntry entry : getDatabse().getEntries()) {
+			autoCompleter.addBibtexEntry(entry);
+		}
+		assertEquals("Bostrom, G.", autoCompleter.complete("Bostr")[0]);
+	}
+	
 	public void testDefaultAutoCompleter() {
 		AbstractAutoCompleter autoCompleter = AutoCompleterFactory.getFor(OTHER_FIELD);
 		for (BibtexEntry entry : getDatabse().getEntries()) {

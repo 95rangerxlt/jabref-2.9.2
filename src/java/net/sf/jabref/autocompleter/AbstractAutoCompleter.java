@@ -26,6 +26,7 @@ import javax.swing.text.JTextComponent;
 import net.sf.jabref.BibtexEntry;
 import net.sf.jabref.Globals;
 import net.sf.jabref.JabRefPreferences;
+import net.sf.jabref.bst.BibtexPurify;
 
 /**
  * An autocompleter delivers possible completions for a given String. There are
@@ -117,6 +118,7 @@ public abstract class AbstractAutoCompleter {
 
 	public void addWordToIndex(String word) {
 		if (word.length() >= SHORTEST_WORD) {
+			word = BibtexPurify.purify(word, null);
 			_index_casesensitive.add(word);
 			
 			// insensitive treatment

@@ -53,7 +53,7 @@ public class BibtexPurify {
 			char c = cs[i];
 			if (Character.isWhitespace(c) || c == '-' || c == '~') {
 				sb.append(' ');
-			} else if (Character.isLetterOrDigit(c)) {
+			} else if (Character.isLetterOrDigit(c) || c == '.' || c == ',') {
 				sb.append(c);
 			} else if (c == '{') {
 				braceLevel++;
